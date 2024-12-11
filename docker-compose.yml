@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  soap-service:
+    build: .
+    ports:
+      - "8081:80"  # Exponer el puerto 80 del contenedor al puerto 8080 de tu máquina local
+    volumes:
+      - ./public:/var/www/html
+      - ./wsdl:/var/www/wsdl

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<definitions name="SoapService"
+             targetNamespace="http://localhost/soap"
+             xmlns:tns="http://localhost/soap"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+    <message name="AddRequest">
+        <part name="a" type="xsd:int"/>
+        <part name="b" type="xsd:int"/>
+    </message>
+    <message name="AddResponse">
+        <part name="result" type="xsd:int"/>
+    </message>
+
+    <portType name="SoapServicePortType">
+        <operation name="add">
+            <input message="tns:AddRequest"/>
+            <output message="tns:AddResponse"/>
+        </operation>
+    </portType>
+
+    <binding name="SoapServiceBinding" type="tns:SoapServicePortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="add">
+            <soap:operation soapAction="add"/>
+            <input>
+                <soap:body use="encoded" namespace="http://localhost/soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+                <soap:body use="encoded" namespace="http://localhost/soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="SoapService">
+        <port name="SoapServicePort" binding="tns:SoapServiceBinding">
+            <soap:address location="http://localhost:8081/server.php"/>
+        </port>
+    </service>
+</definitions>
