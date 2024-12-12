@@ -17,8 +17,8 @@ Before running the application, make sure you have the following:
 1. Clone this repository to your local machine:
 
     ```bash
-    git clone https://github.com/your_username/your_repository.git
-    cd your_repository
+    git clone https://github.com/JordinPinzon/soap-php.git
+    cd soap-php
     ```
 
 2. Place the `service.wsdl` file in the web server's document root, or configure it to point to the correct location (e.g., `/var/www/html/service.wsdl`).
